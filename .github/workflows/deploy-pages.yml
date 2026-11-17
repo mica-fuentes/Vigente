@@ -1,0 +1,46 @@
+name: Desplegar demo en GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # botón «Run workflow» en la pestaña Actions
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Un solo despliegue a la vez; el que está corriendo termina antes de empezar el siguiente.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Armar el sitio (sólo los archivos de la demo)
+        run: |
+          mkdir _site
+          cp index.html app.html watch.html _site/
+          cp -r css js assets _site/
+          touch _site/.nojekyll
+          test -f _site/index.html
+
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
+
+      - name: Subir el sitio
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Publicar
+        id: deployment
+        uses: actions/deploy-pages@v4
