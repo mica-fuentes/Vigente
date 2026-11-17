@@ -90,6 +90,10 @@ p, .lead, .card-sub, .hint, .src-small, .callout p, .sec-body, .empty p { line-h
 .nav-item .grow { flex: 1; }
 .nav-badge { background: var(--lime); color: var(--lime-ink); font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 100px; }
 .sidebar .spacer { flex: 1; }
+.nav-item.logout { font-size: 13px; color: #c9b6f7; margin-top: 4px; padding: 9px 12px 9px 8px; }
+.nav-item.logout::before { display: none; }
+.nav-item.logout svg { flex: none; opacity: .9; }
+.nav-item.logout:hover { color: #fff; }
 .user-chip { display: flex; align-items: center; gap: 10px; padding: 10px 8px 0; border: 0; background: transparent; text-align: left; border-radius: 8px; }
 .user-chip:hover { background: rgba(255,255,255,.06); }
 .user-chip .who b { display: block; font-size: 13px; font-weight: 600; color: #d3c6ee; }

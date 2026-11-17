@@ -173,7 +173,8 @@
         <div class="kv" style="margin-top:6px"><div class="row"><span>Email</span><b>${esc(u.email)}</b></div><div class="row"><span>Teléfono</span><b>${esc(u.phone)}</b></div><div class="row"><span>CUIT</span><b>${esc(u.cuit)}</b></div></div></section>
       <section class="card" style="padding:26px"><h3>Seguridad</h3>
         <div class="sec-row" style="margin-top:8px"><div><b>Contraseña</b><span>${esc(u.passwordChanged)}</span></div><button class="link" data-act="change-pass">Cambiar</button></div>
-        <div class="sec-row"><div><b>Verificación en dos pasos</b><span>${twofaText(u)}</span></div><button class="link" data-act="manage-2fa">Administrar</button></div></section></div>
+        <div class="sec-row"><div><b>Verificación en dos pasos</b><span>${twofaText(u)}</span></div><button class="link" data-act="manage-2fa">Administrar</button></div>
+        <div class="sec-row"><div><b>Sesión</b><span>Salí de Vigente en este navegador</span></div><button class="link" data-act="logout">Cerrar sesión</button></div></section></div>
       <div class="stack" style="gap:20px"><section class="card" style="padding:26px"><h3>Estudio</h3><div class="kv" style="margin-top:10px"><div class="row"><span>Nombre</span><b>${esc(S.estudio.nombre)}</b></div><div class="row"><span>Clientes activos</span><b>${st.clientes}</b></div><div class="row"><span>Plan</span><b>${esc(S.estudio.plan)}</b></div><div class="row"><span>Miembro desde</span><b>${esc(S.estudio.desde)}</b></div></div></section>
         <section class="card" style="padding:26px"><h3>Tus datos</h3><p class="card-sub" style="margin:10px 0 16px;line-height:1.45">Podés exportar toda la información de tu cartera en cualquier momento.</p><button class="btn btn-ghost btn-block" data-act="export">Exportar cartera (.csv)</button></section></div></div>`;
   }

@@ -76,6 +76,7 @@
         </nav>
         <div class="spacer"></div>
         <a class="user-chip" href="#/config/cuenta">${U.userAvatar()}<span class="who"><b>${esc(S.user.name)}</b><span>${esc(S.user.role)}</span></span></a>
+        <button class="nav-item logout" data-act="logout"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 2.5H3.5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1H6M10.5 5 13.5 8l-3 3M13.5 8H6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Cerrar sesión</button>
       </aside>
       <div style="min-width:0">
         <button class="menu-btn" data-act="menu" aria-label="Abrir menú">☰ Menú</button>
@@ -99,6 +100,11 @@
   document.addEventListener('change', (e) => { const el = e.target.closest('[data-ch]'); if (el && W.chs[el.dataset.ch]) W.chs[el.dataset.ch](el, e); });
   document.addEventListener('submit', (e) => { const f = e.target.closest('[data-form]'); if (f && W.forms[f.dataset.form]) { e.preventDefault(); W.forms[f.dataset.form](f, e); } });
 
+  W.acts.logout = () => {
+    closePopover();
+    V.set((S) => { S.loggedIn = false; });
+    U.toast('Cerraste sesión');
+  };
   W.acts.menu = () => { const sb = document.getElementById('sidebar'); if (sb) sb.classList.toggle('open'); };
   document.addEventListener('click', (e) => { const sb = document.getElementById('sidebar'); if (sb && sb.classList.contains('open') && !e.target.closest('#sidebar') && !e.target.closest('[data-act="menu"]')) sb.classList.remove('open'); });
 

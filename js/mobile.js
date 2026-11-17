@@ -43,7 +43,7 @@
   function vHoy() {
     const S = V.S(); const st = Q.stats(); const today = Q.dueToday(); const over = Q.overdue(); const done = Q.presentedToday();
     const d = D.parse(V.TODAY); const unread = Q.unread();
-    return `<div class="m-hero">${status(true)}<div class="row"><span class="logo"><img src="assets/logo-mark.svg" alt="">vigente</span><button class="bell" data-go="#/notificaciones" aria-label="Notificaciones, ${unread} sin leer"><i></i>${unread}</button></div>
+    return `<div class="m-hero">${status(true)}<div class="row"><span class="logo"><img src="assets/logo-mark.svg" alt="">vigente</span><span style="display:flex;gap:8px"><button class="bell" data-act="logout" aria-label="Cerrar sesión">Salir</button><button class="bell" data-go="#/notificaciones" aria-label="Notificaciones, ${unread} sin leer"><i></i>${unread}</button></span></div>
         <div class="dow">${D.DIAS[d.getDay()].toUpperCase()}</div><div class="date">${d.getDate()} de ${D.MES[d.getMonth()]}</div>
         <div class="sums"><span><b style="color:var(--lime)">${st.hoy}</b>vencen hoy</span><span><b>${st.vencidos}</b>${st.vencidos === 1 ? 'vencido' : 'vencidos'}</span><span><b style="color:#d3c6ee">${st.semana}</b>esta semana</span></div></div>
       <div class="m-scroll">
@@ -187,6 +187,7 @@
     const g = e.target.closest('[data-go]'); if (g) { e.preventDefault(); location.hash = g.dataset.go; return; }
     const a = e.target.closest('[data-act]'); if (!a) return;
     const id = a.dataset.id; const k = a.dataset.act;
+    if (k === 'logout') { V.set((S) => { S.loggedIn = false; }); location.hash = '#/login'; return; }
     if (k === 'present') { A.present(id); U.toast('Presentado. Quedó registrado en el historial'); if (a.dataset.open) location.hash = '#/tramite/' + id; }
     else if (k === 'undo') { A.undo(id); U.toast('Deshiciste la presentación'); }
     else if (k === 'month') { ui.month = D.addMonths(ui.month, +a.dataset.d); render(); }
