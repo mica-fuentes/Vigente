@@ -78,8 +78,13 @@
         <a class="user-chip" href="#/config/cuenta">${U.userAvatar()}<span class="who"><b>${esc(S.user.name)}</b><span>${esc(S.user.role)}</span></span></a>
         <button class="nav-item logout" data-act="logout"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 2.5H3.5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1H6M10.5 5 13.5 8l-3 3M13.5 8H6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Cerrar sesión</button>
       </aside>
+      <div class="sb-scrim" data-act="menu"></div>
       <div style="min-width:0">
-        <button class="menu-btn" data-act="menu" aria-label="Abrir menú">☰ Menú</button>
+        <header class="topbar">
+          <button class="tb-btn" data-act="menu" aria-label="Abrir menú" aria-controls="sidebar"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M3.5 6h15M3.5 11h15M3.5 16h15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+          <a class="tb-brand" href="#/hoy" aria-label="Vigente, ir a Hoy"><img src="assets/logo-mark.svg" alt=""><span>vigente</span></a>
+          <button class="tb-btn" data-act="notifs" aria-label="Notificaciones${unread ? ', ' + unread + ' sin leer' : ''}"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M5 16.5h12l-1.4-1.9V10a4.6 4.6 0 0 0-9.2 0v4.6L5 16.5zM9 18.5a2 2 0 0 0 4 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>${unread ? `<span class="nav-badge">${unread}</span>` : ''}</button>
+        </header>
         <main class="main" id="main">${inner}</main>
       </div>
     </div>`;
@@ -330,7 +335,7 @@
         <div class="month"><div class="dow">${['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'].map((x) => `<div>${x}</div>`).join('')}</div>
         <div class="cells">${cells.map((d) => { const dt = D.parse(d); const out = d.slice(0, 7) !== ym; const items = out ? [] : Q.byDate(S.tramites.filter((t) => t.due === d));
           return `<div class="cell${out ? ' out' : ''}${d === V.TODAY ? ' today' : ''}"><b>${dt.getDate()}</b>${items.map((t) => { const c = Q.client(t.clientId); const st = Q.status(t); const k = st === 'nuevo' ? 'proximo' : st; const shp = { urgente: 'tri', vencido: 'sq', presentado: 'dot' }[k] || 'ring';
-            return `<button class="mchip k-${k}" data-go="#/tramite/${t.id}" title="${esc(c.name)} — ${esc(t.name)}">${shape(shp)}<span>${esc(c.short)}<br>${esc(t.short)}</span></button>`; }).join('')}</div>`; }).join('')}</div></div>`,
+            return `<button class="mchip k-${k}" data-go="#/tramite/${t.id}" title="${esc(c.name)} — ${esc(t.name)}">${shape(shp)}<span class="mt">${esc(c.short)}<br>${esc(t.short)}</span><span class="mi" aria-hidden="true">${esc(Q.initials(c.name))}</span></button>`; }).join('')}</div>`; }).join('')}</div></div>`,
     };
   }
 

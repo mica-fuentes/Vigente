@@ -128,8 +128,8 @@
     return `<div class="card" style="padding:28px">
       <h3 style="font-size:16px;margin-bottom:16px">Tipo de contribuyente</h3>
       <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px" role="group" aria-label="Tipo de contribuyente">${V.TYPES.map((t) => chipToggle(d.type === t, t, 'draft-type', `data-v="${esc(t)}"`)).join('')}</div>
-      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:24px"><div class="field" style="width:260px;margin:0"><label for="dc">CUIT</label><input id="dc" class="input" value="${esc(d.cuit)}" placeholder="20-12345678-9" data-in="draft-cuit" maxlength="13"></div>
-        <div class="field" style="width:340px;margin:0"><label for="da">Actividad principal</label><input id="da" class="input" value="${esc(d.activity)}" placeholder="Elaboración de productos de panadería" data-in="draft-act" maxlength="80"></div></div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:24px"><div class="field" style="width:260px;max-width:100%;margin:0"><label for="dc">CUIT</label><input id="dc" class="input" value="${esc(d.cuit)}" placeholder="20-12345678-9" data-in="draft-cuit" maxlength="13"></div>
+        <div class="field" style="width:340px;max-width:100%;margin:0"><label for="da">Actividad principal</label><input id="da" class="input" value="${esc(d.activity)}" placeholder="Elaboración de productos de panadería" data-in="draft-act" maxlength="80"></div></div>
       <h3 style="font-size:16px;margin-bottom:16px">Jurisdicciones</h3>
       <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px" role="group" aria-label="Jurisdicciones">${V.JURIS.filter((j) => j.id !== 'caba').map((j) => chipToggle(d.juris.includes(j.id), j.label, 'draft-juris', `data-v="${j.id}"`)).join('')}</div>
       <h3 style="font-size:16px;margin-bottom:12px">Trámites recurrentes que le corresponden</h3>

@@ -42,6 +42,11 @@ Web, app y reloj **comparten el estado**: si marcás «Ya lo presenté» en el r
 - **Novedades y cursos**, clientes afectados (adhesión editable), **foro** (categorías, responder, «Me sirve», abrir tema).
 - **Configuración**: cambiar foto, cambiar contraseña (con validaciones), verificación en dos pasos, alertas, fuentes oficiales, plan, exportar cartera.
 
+## Pantallas y dispositivos
+
+- La **web** (`index.html`) es responsive: en escritorio usa el menú lateral; en tablet y celular (hasta 900 px) pasa a una barra superior con menú, notificaciones y botón «Demo», las tablas se vuelven tarjetas y los modales se abren como hoja inferior. Probada de 320 a 1440 px.
+- La **app móvil** (`app.html`) ocupa toda la pantalla en celulares (≤ 520 px) y se muestra dentro de un marco de teléfono en pantallas más grandes.
+
 ## Alcance de la demo
 
 Es una demostración de diseño, no un producto: **no se envían correos reales** (avisos, recordatorios, recuperar contraseña),

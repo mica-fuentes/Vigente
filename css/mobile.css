@@ -145,3 +145,11 @@ body.m-body { background: #ddd6ef; min-height: 100vh; }
 .w-state { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 13px 16px; font-size: 14px; font-weight: 600; } .w-state small { display: block; font-weight: 400; color: var(--muted); font-size: 12.5px; margin-top: 2px; } .w-state.on { border: 2px solid var(--primary); background: var(--primary-wash); padding: 12px 15px; } .w-state i { width: 10px; height: 10px; border-radius: 50%; background: #c9c3dd; flex: none; } .w-state.on i { background: var(--primary); }
 .w-help { margin-top: 18px; font-size: 13px; color: var(--muted); line-height: 1.5; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
 @media (max-width: 760px) { .w-layout { grid-template-columns: 1fr; gap: 28px; } }
+
+/* teléfonos muy chicos (<= 360): el estado pasa debajo del nombre en vez de apretarlo */
+@media (max-width: 360px) {
+  .m-card .top { flex-wrap: wrap; row-gap: 6px; }
+  .m-card .top .t { flex: 1 1 0; min-width: 0; }
+  .m-card .top .badge { order: 3; margin-left: 52px; }
+  .m-hero .date { font-size: 27px; }
+}
